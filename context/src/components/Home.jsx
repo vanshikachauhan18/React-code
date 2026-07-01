@@ -2,12 +2,12 @@ import { useContext } from "react";
 import UserContext from "../context/UserContext";
 
 function Home(){
-    const {name,age,marks} = useContext(UserContext);
+    const {id,name,city} = useContext(UserContext);
     return(
         <>
-        <h1>Hi , name is {name}</h1>
-        <h1>{age}</h1>
-        <h1>{marks}</h1>
+        <h1>Hi , id i {id}</h1>
+        <h1>{name}</h1>
+        <h1>{city}</h1>
         </>
     )
 }
