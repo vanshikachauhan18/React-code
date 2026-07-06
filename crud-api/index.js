@@ -26,19 +26,37 @@ app.get("/students", (req, res) => {
 });
 
 app.post("/students", (req, res) => {
-  students.push({
-    id: 3,
-    name: "newname",
-    age: 12,
-    city: "kolkata",
-    school: "xyz international school"
+ // students.push({
+   // id: 3,
+    //name: "newname",
+   // age: 12,
+    //city: "kolkata",
+    //school: "xyz international school"
+  students.push(req.body);
+   res.json({
+    message:"student added succesfully" , students
+  })
   });
 
-  res.json({
-    message: "Student added successfully",
-    students
-  });
-});
+  app.put("/students/:id",(req,res) =>{
+    const studentID = Number(req.params.id,10);
+    const index = students.findIndex(s=> s.id === studentID);
+     
+    students[index] = req.body;
+    res.json({
+      message:"student updated successfully",students
+    })
+  })
+
+  app.delete("/students/:id",(req,res) =>{
+    const studentID = Number(req.params.id,10);
+    const index = students.findIndex(s=> s.id === studentID);
+     
+    students[index] = req.body;
+    res.json({
+      message:"student updated successfully",students
+    });
+  })
 
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
